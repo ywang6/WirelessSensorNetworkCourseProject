@@ -1,0 +1,34 @@
+1. How to install program into your motes?
+Basically, you need to install 3 program into your motes.
+1.1 Install emitter program: 
+	Under the directory of emitter, run " make install.5 telosb /dev/ttyUSB# " ( # is the USB sequence number you are using) 
+1.2 Install forwarder program:
+	Under the directory of forwarder, run " make install.X telosb /dev/ttyUSB# " ( X is 1, 2 or 3, # is the USB seq No.)
+1.3 Install base station program:
+	Under the directory of base, run " make install.0 telosb /dev/ttyUSB# " ( # is the USB seq No.)
+
+2. If you want to test this NesC program you have two choices
+2.1 java TestSerial -comm serial@/dev/ttyUSB0:telosb
+Result should look like follow
+Mote ID 1, RSSI 20
+Mote ID 2, RSSI 18
+Mote ID 3, RSSI 19
+	.
+	.
+	.
+2.2 java net.tinyos.tools.Listen -comm serial@/dev/ttyUSB0:telosb
+Result should look like follow
+last 9 digit
+nodeid -- counter -- -- -- rssi timestamp --
+01     03  DA     00 06 00  16    1F      E4
+01     03  DA     00 06 00  16    21      2F
+03     03  DA     00 15 00  12    B3      FA
+	.	.	.
+	.	.	.
+	.	.	.
+3. There are UI program press.java and basic operation program TestSerial.java
+Run "make telosb" first and run "javac press.java" then to get a press.class file, and then run "java press", then you can get a UI to run and stop the program.
+FYI: 
+a. monitor function only works when you have a cheese program in your PC. Sorry for that.
+b. I quote some of my code in TestSerial.java for testing and for your convenience to test. I mention that in my code.
+c. Any questions, please feel free to contact yu_wang888@hotmail.com title with BabyCare System Question.
